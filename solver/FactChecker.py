@@ -5,8 +5,8 @@ from solver.WikipediaHelper import WikipediaHelper
 
 class FactChecker:
     def __init__(self):
-        self.fact_entity_extraction = FactEntityExtraction.FactEntityExtraction()
-        self.wikipedia_helper = WikipediaHelper.WikipediaHelper()
+        self.fact_entity_extraction = FactEntityExtraction()
+        self.wikipedia_helper = WikipediaHelper()
         pass
 
     def check_fact(self, fact):
@@ -56,7 +56,7 @@ class FactChecker:
 
 
 def main():
-    path = "test.tsv"
+    path = "solver/test.tsv"
     fact_checker = FactChecker()
 
     with open(path, encoding="latin-1") as tsvfile:
