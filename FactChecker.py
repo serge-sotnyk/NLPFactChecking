@@ -57,7 +57,7 @@ class FactChecker:
 
 if __name__ == "__main__":
 
-    path = "train-short.tsv"
+    path = "test.tsv"
 
     success_count = 0.0
     num_of_rows = 0.0
@@ -67,23 +67,21 @@ if __name__ == "__main__":
     with open(path, encoding="latin-1") as tsvfile:
         next(tsvfile)
         reader = csv.reader(tsvfile, delimiter='\t')
+        writer = open("result.ttl", "w+")
+        i = 0
 
         for row in reader:
-            if len(row) < 3:
+            if len(row) < 2:
                 continue
-
+            id = int(row[0])
             fact = row[1]
-            expected_val = float(row[2])
 
             estimated_val = float(fact_checker.check_fact(fact))
-            print(expected_val, estimated_val)
+            i += 1
+            print(str(i) + ": " + str(estimated_val))
+            outputFactLine = "<http://swc2017.aksw.org/task2/dataset/" + str(id) +"> " + "<http://swc2017.aksw.org/hasTruthValue> " + "\"" + str(estimated_val) + "\"^^<http://www.w3.org/2001/XMLSchema#double> ."
+            writer.write(outputFactLine+"\n")
 
-            if expected_val == estimated_val:
-                success_count += 1.0
-            
-            num_of_rows += 1.0
-    
-    print(success_count / num_of_rows)
-
+    writer.close()
     # extraction = FactEntityExtraction()
     # extraction.process_fact("John Sparrow David Thompson's office is Canada")
