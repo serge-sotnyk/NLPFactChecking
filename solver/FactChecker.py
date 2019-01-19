@@ -1,12 +1,12 @@
 import csv
-from FactEntityExtraction import FactEntityExtraction
-from WikipediaHelper import WikipediaHelper
+from solver.FactEntityExtraction import FactEntityExtraction
+from solver.WikipediaHelper import WikipediaHelper
 
 
 class FactChecker:
     def __init__(self):
-        self.fact_entity_extraction = FactEntityExtraction()
-        self.wikipedia_helper = WikipediaHelper()
+        self.fact_entity_extraction = FactEntityExtraction.FactEntityExtraction()
+        self.wikipedia_helper = WikipediaHelper.WikipediaHelper()
         pass
 
     def check_fact(self, fact):
@@ -39,7 +39,7 @@ class FactChecker:
                     # check if entities exist together
                     if candidate_entity in subject_page.content:
                         num_of_common_occurences += 1
-                    
+
                     total_num_of_occurences += 1
                     compared_entities.add(comma_seperated_entities)
                     compared_entities.add(comma_seperated_entities_reverse)
@@ -55,13 +55,8 @@ class FactChecker:
             return 0.0
 
 
-if __name__ == "__main__":
-
+def main():
     path = "test.tsv"
-
-    success_count = 0.0
-    num_of_rows = 0.0
-    
     fact_checker = FactChecker()
 
     with open(path, encoding="latin-1") as tsvfile:
@@ -79,9 +74,13 @@ if __name__ == "__main__":
             estimated_val = float(fact_checker.check_fact(fact))
             i += 1
             print(str(i) + ": " + str(estimated_val))
-            outputFactLine = "<http://swc2017.aksw.org/task2/dataset/" + str(id) +"> " + "<http://swc2017.aksw.org/hasTruthValue> " + "\"" + str(estimated_val) + "\"^^<http://www.w3.org/2001/XMLSchema#double> ."
-            writer.write(outputFactLine+"\n")
+            outputFactLine = "<http://swc2017.aksw.org/task2/dataset/" + str(
+                id) + "> " + "<http://swc2017.aksw.org/hasTruthValue> " + "\"" + str(
+                estimated_val) + "\"^^<http://www.w3.org/2001/XMLSchema#double> ."
+            writer.write(outputFactLine + "\n")
 
-    writer.close()
-    # extraction = FactEntityExtraction()
-    # extraction.process_fact("John Sparrow David Thompson's office is Canada")
+        writer.close()
+
+
+if __name__ == "__main__":
+    main()
