@@ -35,7 +35,7 @@ factchecker
 
 ### Result
 
-Results can be seen from within the repo in the following file:
+The program takes 5-10 minutes to finish. The final results can be seen from within the repo in the following file:
 
 ```
 result.ttl
