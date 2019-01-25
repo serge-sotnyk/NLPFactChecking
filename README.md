@@ -1,5 +1,16 @@
 # NLPFactChecking
 
+## Team Name: BenchCrawlers
+
+### Team Members:
+* Adnan Manzoor :   6830516
+* Numan Ijaz :      6845454
+* Ayaz Maqbool :    6845575
+
+### Approach:
+
+
+
 ### Installing
 
 To install the tool, clone the repository from GitHub and then run the command:
