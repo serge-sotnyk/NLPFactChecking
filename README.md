@@ -11,7 +11,7 @@
 Our solution reads the ```test.tsv``` file in the solver folder and processes every fact line-by-line. The following steps are performed for every fact:
 
 **Named Entities Extraction:**
-* The fact is passed to `extract_named_entities` method of `FactEntityExtraction` class.
+* The fact is passed to `extract_named_entities` method of `solver/FactEntityExtraction` class.
 * The pre-processing of the fact begins.
 * The fact is tokenized using nltk's [word_tokenize](https://www.nltk.org/_modules/nltk/tokenize.html) method.
 * This tokenized fact is then passed to nltk's [pos_tag](https://www.nltk.org/book/ch05.html) method.
@@ -64,3 +64,26 @@ The program takes 5-10 minutes to finish. The final results can be seen from wit
 ```
 result.ttl
 ```
+
+***5 Correct Facts***
+
+
+| Fact ID | FACT                             |
+|---------|----------------------------------|
+| 8383421 | Obama was president of America.  |
+| 8410249 | London is capital of UK.         |
+| 8370702 | Abdus Salam won the Nobel Prize. |
+| 8414185 | Australia has nice beaches.      |
+| 8821363 | Germany has cold climate.        |
+	
+
+***5 False Facts***
+
+| Fact ID | FACT                                                   |
+|---------|--------------------------------------------------------|
+| 8407451 | Silicon Valley is in Namibia.                          |
+| 8857436 | Computer is made of Copper.                            |
+| 8304858 | Berlin is situated in Antarctica.                      |
+| 8865624 | Arthur Shelby was the prime minister of Illinios.      |
+| 8247786 | Whale eats burgers.                                    |
+	
